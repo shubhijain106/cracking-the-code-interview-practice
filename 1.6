@@ -1,0 +1,62 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void rotate(int[][] ar,int size)
+    {
+      for(int i=0;i<size/2;i++)
+      {
+          
+          for(int j=i;j<size-1-i;j++)
+          {
+              int temp=ar[i][j];
+              ar[i][j]=ar[size-1-j][i];
+              ar[size-1-j][i]=ar[size-1-i][size-1-j];
+              ar[size-1-i][size-1-j]=ar[j][size-1-i];
+              ar[j][size-1-i]=temp;
+            
+          }
+          
+      }
+      for(int i=0;i<size;i++)
+      {
+         for(int j=0;j<size;j++)
+          {
+             System.out.print(ar[i][j]+" ");
+          }
+         System.out.println();
+      }
+      } 
+        
+    
+    
+    public static void main(String[] args) throws IOException {
+        InputStreamReader in=new InputStreamReader(System.in);
+        BufferedReader in1=new BufferedReader(in);
+        int n=Integer.parseInt(in1.readLine());
+        int[][] ar=new int[n][n];
+        for(int i=0;i<n;i++)
+        {
+            String[] n1=in1.readLine().split(" ");
+            for(int j=0;j<n;j++)
+            {
+               ar[i][j]=Integer.parseInt(n1[j]); 
+              
+            }
+            
+        }
+        for(int i=0;i<n;i++)
+      {
+         for(int j=0;j<n;j++)
+          {
+             System.out.print(ar[i][j]+" ");
+          }
+         System.out.println();
+      }
+        rotate(ar,n);
+    }
+}
