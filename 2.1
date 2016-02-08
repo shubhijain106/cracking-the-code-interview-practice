@@ -1,0 +1,157 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+class Solution
+{
+Node head;
+class Node
+{
+   int data;
+   Node next;
+   
+}
+
+
+ public void printList(Node head)
+ {
+        Node tnode = head;
+        while (tnode != null)
+        {
+            System.out.print(tnode.data+" ");
+            tnode = tnode.next;
+        }
+        System.out.println();
+ }
+   
+
+     
+   
+      public Node Delete(Node head, int position) 
+      {
+          
+ if(position==0)
+ {
+     head=head.next;
+     return head;
+ }
+ else
+ { 
+         Node temp=head;
+         Node prev=head;
+      while(position>0)
+         {
+          prev=temp;
+         System.out.println("temp"+temp.data);
+          temp=temp.next;
+          position--;
+         }
+         System.out.println("out of temp"+temp.data);
+         System.out.println("prev"+prev.data);
+         //new_node.next=temp;
+         prev.next=temp.next;
+         return head;
+
+ }
+      }
+
+public Node insert(int data)
+{
+    Node nen=new Node();
+    nen.data=data;
+    nen.next=null;
+    if(head==null)
+    {
+        head=nen;
+    }
+    else
+    {
+        Node temp=head;
+        while(temp.next!=null)
+            temp=temp.next;
+        temp.next=nen;
+        
+    }
+return head;
+}
+ 
+     
+public Node remdup()
+{
+Node temp=head;
+Node prev=null;
+Hashtable table=new Hashtable();
+while(temp!=null)
+{
+    if(table.containsKey(temp.data))
+    {
+      prev.next=temp.next;
+    }
+    else
+    {table.put(temp.data, true);
+    prev=temp;}
+    temp=temp.next;
+}
+return head;
+}
+public Node remdupwb()
+{
+    Node temp=head;
+    int flag=1;
+    while(temp.next!=null)
+    {
+        System.out.println(temp.data);
+        Node rec=temp.next;
+        Node prev=temp;
+        while(rec!=null)
+                {
+                    System.out.println(" "+rec.data);
+                    if(temp.next.next==null && rec.next==null)
+                    {
+                       if(temp.data==rec.data) 
+                       {prev.next=null;
+                        flag=0;
+                        break;
+                       }
+                       else
+                       {flag=0; break;}
+                    }
+                    else if(temp.data==rec.data)
+                    {
+                       prev.next=rec.next;
+                    }
+                    else{prev=rec;}
+                    rec=rec.next;
+                }
+        if(flag==0)
+            break;
+        temp=temp.next;
+    }
+    return head;
+}
+        
+
+    public static void main(String[] args)
+    {
+       
+      
+        
+       Solution llist = new Solution();
+       llist.insert(1);
+       llist.insert(2);
+       llist.insert(2);
+       llist.insert(1);
+       llist.insert(3);
+       llist.insert(4);
+       llist.insert(3);
+       llist.insert(7);
+       llist.insert(6);
+       llist.insert(6);
+       llist.remdupwb();
+       llist.printList(llist.head);
+       
+
+    }
+}
+// This code is contributed by Rajat Mishra
