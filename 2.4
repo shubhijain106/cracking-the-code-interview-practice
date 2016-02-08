@@ -1,0 +1,124 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+class Solution
+{
+Node head;
+class Node
+{
+   int data;
+   Node next;
+   
+}
+
+
+ public void printList(Node head)
+ {
+        Node tnode = head;
+        while (tnode != null)
+        {
+            System.out.print(tnode.data+" ");
+            tnode = tnode.next;
+        }
+        System.out.println();
+ }
+   
+
+     
+   
+      public Node Delete(Node head, int position) 
+      {
+          
+ if(position==0)
+ {
+     head=head.next;
+     return head;
+ }
+ else
+ { 
+         Node temp=head;
+         Node prev=head;
+      while(position>0)
+         {
+          prev=temp;
+         System.out.println("temp"+temp.data);
+          temp=temp.next;
+          position--;
+         }
+         System.out.println("out of temp"+temp.data);
+         System.out.println("prev"+prev.data);
+         //new_node.next=temp;
+         prev.next=temp.next;
+         return head;
+
+ }
+      }
+
+public Node insert(int data)
+{
+    Node nen=new Node();
+    nen.data=data;
+    nen.next=null;
+    if(head==null)
+    {
+        head=nen;
+    }
+    else
+    {
+        Node temp=head;
+        while(temp.next!=null)
+            temp=temp.next;
+        temp.next=nen;
+        
+    }
+return head;
+}
+ 
+     
+public void merge(int x)
+{
+Solution l1 = new Solution();
+Solution l2 = new Solution();
+Node temp=head;
+while(temp!=null)
+{
+    if(temp.data<x)
+        l1.insert(temp.data);
+    else 
+        l2.insert(temp.data);
+    temp=temp.next;
+}
+Node p=l1.head;
+while(p.next!=null)
+    p=p.next;
+p.next=l2.head;
+printList(l1.head);
+}
+  
+        
+
+    public static void main(String[] args)
+    {
+       
+      
+        
+       Solution llist = new Solution();
+       llist.insert(1);
+       llist.insert(2);
+       llist.insert(9);
+       llist.insert(10);
+       llist.insert(13);
+       llist.insert(4);
+       llist.insert(3);
+       llist.insert(7);
+       llist.insert(6);
+       llist.insert(6);
+       llist.merge(5);
+       llist.printList(llist.head);
+       
+
+    }
+}
+// This code is contributed by Rajat Mishra
