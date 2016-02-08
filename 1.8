@@ -1,0 +1,30 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void isSubstring(String s1,String s2)
+    {
+       if(s1.length()==s2.length())
+       {
+           String ch=s1+s1;
+           if(ch.contains(s2))
+               System.out.println("yes");
+           else
+               System.out.println("no"); 
+       }
+       
+    }   
+    public static void main(String[] args) throws IOException {
+        InputStreamReader in=new InputStreamReader(System.in);
+        BufferedReader in1=new BufferedReader(in);
+        String m=in1.readLine();
+        String n=in1.readLine();
+        
+        
+        isSubstring(m,n);
+    }
+}
